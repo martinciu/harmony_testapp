@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title Harmony TestApp
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", :type => "text/javascript"}
+%body
+  Hi, my name is
+  %input{:id => "name", :type => "text", :name => "name"}
+  %input{:type => "button", :value => "Say Hi!", :id => "button"}
+  #names
+:javascript
+  $("#button").click(function(){
+    $.post(
+      "/hi", 
+      { name: $("#name").val() }, 
+      function(response) {
+        $("#names").html(response);
+      }
+    );
+  });
+
+  
